@@ -21,7 +21,7 @@ export default class Main {
 
     private static setMainWindow() {
         Main.mainWindow = Main.createWindow();
-        Main.mainWindow.loadURL('file://' + __dirname + '/index.html');
+        Main.mainWindow.loadFile('index.html');
         Main.mainWindow.on('closed', Main.onClose);
     }
 
