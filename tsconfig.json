@@ -9,7 +9,8 @@
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "esModuleInterop": true
   },
   "exclude": [ "node_modules" ]
 }

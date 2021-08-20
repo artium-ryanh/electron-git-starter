@@ -1,4 +1,5 @@
-import {app, BrowserWindow} from 'electron';
+import { app, BrowserWindow } from 'electron';
+import path from 'path';
 
 export default class Main {
     static mainWindow: Electron.BrowserWindow;
@@ -16,7 +17,13 @@ export default class Main {
     }
 
     private static createWindow(): BrowserWindow {
-        return new Main.BrowserWindow({ width: 800, height: 600});
+        return new Main.BrowserWindow({ 
+            width: 800, 
+            height: 600,
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.js')
+            }
+        });
     }
 
     private static setMainWindow() {
