@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'"> 
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
     <title>Hello World!</title>
   </head>
   <body>
@@ -13,4 +13,31 @@
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
   </body>
+
+  <p>
+    Status: <span id="status"></span>
+    <ul>
+      <li id="modified-label" hidden>Modified
+        <ul id="modified"></ul>
+      </li>
+      <li id="not_added-label" hidden>Not Staged
+        <ul id="not_added"></ul>
+      </li>
+      <li id="conflicted-label" hidden>Conflicted
+        <ul id="conflicted"></ul>
+      </li>
+      <li id="created-label" hidden>Created
+        <ul id="created"></ul>
+      </li>
+      <li id="deleted-label" hidden>Deleted
+        <ul id="deleted"></ul>
+      </li>
+      <li id="staged-label" hidden>Staged
+        <ul id="staged"></ul>
+      </li>
+    </ul>
+  </p>
+
+  <button id="status-button">Git Status</button>
+  <script>require("./renderer-process/renderer.js")</script>
 </html>
