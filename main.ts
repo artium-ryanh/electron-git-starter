@@ -18,10 +18,14 @@ export default class Main {
 
     private static createWindow(): BrowserWindow {
         return new Main.BrowserWindow({ 
-            width: 800, 
-            height: 600,
+            width: 1440, 
+            height: 810,
             webPreferences: {
-                preload: path.join(__dirname, 'preload.js')
+                preload: path.join(__dirname, 'preload.js'),
+                // The following lines are unsafe, but I couldn't load the renderer in index.html without them.
+                // https://github.com/electron/electron-quick-start/issues/463
+                nodeIntegration: true,
+                contextIsolation: false
             }
         });
     }
@@ -29,6 +33,13 @@ export default class Main {
     private static setMainWindow() {
         Main.mainWindow = Main.createWindow();
         Main.mainWindow.loadFile('index.html');
+
+        // uncomment to open the console. Shows renderer console logs
+        // Main.mainWindow.webContents.openDevTools({
+        //     mode: 'detach',
+        //     activate: true
+        // });
+
         Main.mainWindow.on('closed', Main.onClose);
     }
 
